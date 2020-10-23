@@ -1,4 +1,4 @@
-entero var = 123; 
+logico var = verdadero; 
 
 
 si ( var > 25) {

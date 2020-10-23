@@ -23,13 +23,27 @@ sentencia: asignacion
 	;
 
 asignacion: declaracion ASIGNATION NUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASIGNATION STRING BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASIGNATION CHAR BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASIGNATION FALSO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
 	| declaracion ASIGNATION ID BREAKER {printf("La sentencia es valida: asignacion-declaracion var\n");}
 	| declaracion BREAKER {printf("La sentencia es valida: dec\n") ; }
 	| ID ASIGNATION NUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASIGNATION STRING BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASIGNATION CHAR BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASIGNATION BOOLEAN BREAKER {printf("La sentencia es valida: asig= n\n") ; }
 	| ID ASIGNATION ID BREAKER {printf("La sentencia es valida: asig = id\n") ; }
 	;
 
-declaracion: INT ID { }
+declaracion: BYTE ID
+	| INT ID
+	| LONG ID
+	| FLOAT ID
+	| DOUBLE ID
+	| BOOLEAN ID
+	| CHARVAR ID
+	| STRINGVAR ID
 	;
 
 
