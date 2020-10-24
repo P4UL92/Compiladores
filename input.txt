@@ -1,7 +1,6 @@
 logico var = verdadero; 
 
-
-si ( var > 25) {
+si ( var > 25.5) {
 	entero mayor = var;
 }
 

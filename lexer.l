@@ -54,6 +54,7 @@ DOUBLE				(realLargo)
 BOOLEAN				(logico)
 CHARVAR				(caracter)
 STRINGVAR			(cadena)
+FLOATNUMBER				([0-9]+\.[0-9]+)
 NUMBER				([0-9]+)
 ID				([$]?[a-zA-Z_]+[0-9]*)
 SPACE				(((\t)*(\ )+(\t)*)|((\ )*(\t)+(\ )*))
@@ -95,6 +96,7 @@ NEXTLINE			(\n)
 {BOOLEAN}		{agregar_token(BOOLEAN, yytext); return BOOLEAN; }
 {CHARVAR}           	{agregar_token(CHARVAR, yytext); return CHARVAR; }
 {STRINGVAR}		{agregar_token(STRINGVAR, yytext); return STRINGVAR; }
+{FLOATNUMBER}		{agregar_token(FLOATNUMBER, yytext); return FLOATNUMBER; }
 {NUMBER}		{agregar_token(NUMBER, yytext); return NUMBER; }
 {ID}			{agregar_token(ID, yytext); return ID; }
 {SPACE}			{ }

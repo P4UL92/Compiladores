@@ -74,10 +74,11 @@
      BOOLEAN = 290,
      CHARVAR = 291,
      STRINGVAR = 292,
-     NUMBER = 293,
-     ID = 294,
-     SPACE = 295,
-     NEXTLINE = 296
+     FLOATNUMBER = 293,
+     NUMBER = 294,
+     ID = 295,
+     SPACE = 296,
+     NEXTLINE = 297
    };
 #endif
 

@@ -10,7 +10,7 @@ int yyerror(char *s);
 %}
 
 /* Sección REGLAS */
-%token PACKAGE CLASS FUNCTION SUBFUNCTION IF ELSE DO EVALUATOR VERDADERO FALSO BREAKER BINDER OPERATOR APPEND ADD SUBSTRACT COMPARATOR ASIGNATION LINKER OPENCLAUSE CLOSECLAUSE OPENCONTROLLER CLOSECONTROLLER STRING CHAR STARTER BYTE SHORT INT LONG FLOAT DOUBLE BOOLEAN CHARVAR STRINGVAR NUMBER ID SPACE NEXTLINE
+%token PACKAGE CLASS FUNCTION SUBFUNCTION IF ELSE DO EVALUATOR VERDADERO FALSO BREAKER BINDER OPERATOR APPEND ADD SUBSTRACT COMPARATOR ASIGNATION LINKER OPENCLAUSE CLOSECLAUSE OPENCONTROLLER CLOSECONTROLLER STRING CHAR STARTER BYTE SHORT INT LONG FLOAT DOUBLE BOOLEAN CHARVAR STRINGVAR FLOATNUMBER NUMBER ID SPACE NEXTLINE
 
 %%
 
@@ -23,6 +23,7 @@ sentencia: asignacion
 	;
 
 asignacion: declaracion ASIGNATION NUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion float num\n");}
 	| declaracion ASIGNATION STRING BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
 	| declaracion ASIGNATION CHAR BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
 	| declaracion ASIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
@@ -30,6 +31,7 @@ asignacion: declaracion ASIGNATION NUMBER BREAKER {printf("La sentencia es valid
 	| declaracion ASIGNATION ID BREAKER {printf("La sentencia es valida: asignacion-declaracion var\n");}
 	| declaracion BREAKER {printf("La sentencia es valida: dec\n") ; }
 	| ID ASIGNATION NUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
 	| ID ASIGNATION STRING BREAKER {printf("La sentencia es valida: asig= n\n") ; }
 	| ID ASIGNATION CHAR BREAKER {printf("La sentencia es valida: asig= n\n") ; }
 	| ID ASIGNATION BOOLEAN BREAKER {printf("La sentencia es valida: asig= n\n") ; }
@@ -57,7 +59,12 @@ comparacion: IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE asignacion CL
 comparar: ID COMPARATOR ID 
 	| NUMBER COMPARATOR NUMBER 
  	| NUMBER COMPARATOR ID 
+ 	| NUMBER COMPARATOR FLOATNUMBER 
+ 	| FLOATNUMBER COMPARATOR NUMBER 
+ 	| FLOATNUMBER COMPARATOR FLOATNUMBER 
+ 	| FLOATNUMBER COMPARATOR ID 
 	| ID COMPARATOR	NUMBER 
+	| ID COMPARATOR	FLOATNUMBER 
 	;
 
 
