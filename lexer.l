@@ -26,7 +26,8 @@ SUBFUNCTION			(imprimir(Ln)?|formato|igual|aTexto)
 IF				(si)
 ELSE				(casoContrario)
 DO				(hacer)
-EVALUATOR			(mientras|para)
+WHILE			(mientras)
+FOR				(para)
 VERDADERO			(verdadero)
 FALSO				(falso)
 BREAKER				(;)
@@ -68,7 +69,8 @@ NEXTLINE			(\n)
 {IF}                	{agregar_token(IF, yytext);  return IF; }
 {ELSE}              	{agregar_token(ELSE, yytext); return ELSE;}
 {DO}                	{agregar_token(DO, yytext); return DO;}
-{EVALUATOR}         	{agregar_token(EVALUATOR, yytext); return EVALUATOR; }
+{WHILE}         	{agregar_token(WHILE, yytext); return WHILE; }
+{FOR}         	{agregar_token(FOR, yytext); return FOR; }
 {VERDADERO}             {agregar_token(VERDADERO, yytext); return VERDADERO; }
 {FALSO}             	{agregar_token(FALSO, yytext); return FALSO; }
 {BREAKER}           	{agregar_token(BREAKER, yytext); return BREAKER; }

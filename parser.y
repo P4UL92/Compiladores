@@ -10,7 +10,7 @@ int yyerror(char *s);
 %}
 
 /* Sección REGLAS */
-%token PACKAGE CLASS FUNCTION SUBFUNCTION IF ELSE DO EVALUATOR VERDADERO FALSO BREAKER BINDER OPERATOR APPEND ADD SUBSTRACT COMPARATOR ASIGNATION LINKER OPENCLAUSE CLOSECLAUSE OPENCONTROLLER CLOSECONTROLLER STRING CHAR STARTER BYTE SHORT INT LONG FLOAT DOUBLE BOOLEAN CHARVAR STRINGVAR FLOATNUMBER NUMBER ID SPACE NEXTLINE
+%token PACKAGE CLASS FUNCTION SUBFUNCTION IF ELSE DO WHILE FOR VERDADERO FALSO BREAKER BINDER OPERATOR APPEND ADD SUBSTRACT COMPARATOR ASIGNATION LINKER OPENCLAUSE CLOSECLAUSE OPENCONTROLLER CLOSECONTROLLER STRING CHAR STARTER BYTE SHORT INT LONG FLOAT DOUBLE BOOLEAN CHARVAR STRINGVAR FLOATNUMBER NUMBER ID SPACE NEXTLINE
 
 %%
 
@@ -19,9 +19,12 @@ programa: paquete clase
 	;
 
 paquete: PACKAGE ID APPEND ID APPEND ID BREAKER
+	| PACKAGE ID APPEND ID BREAKER
+	| PACKAGE ID BREAKER
 	;
 
 clase: CLASS ID OPENCLAUSE punto_entrada CLOSECLAUSE
+	| CLASS ID OPENCLAUSE CLOSECLAUSE
 	;
 
 punto_entrada: STARTER OPENCLAUSE sentencias CLOSECLAUSE
@@ -34,9 +37,23 @@ sentencias: sentencias sentencia
 sentencia: asignacion
 	| comparacion
 	| metodo
+	| iterador
+	| incrementar BREAKER
 	;
 
-metodo:FUNCTION APPEND submetodo BREAKER
+iterador: FOR iterador_header OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: para{}\n")}
+	| WHILE condicion OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: mientras{}\n")}
+	| DO OPENCLAUSE sentencias CLOSECLAUSE WHILE OPENCONTROLLER condicion CLOSECONTROLLER BREAKER {printf("La sentencia es valida: hacer - mientras{}\n")}
+	;
+
+iterador_header: OPENCONTROLLER asignacion condicion BREAKER incrementar CLOSECONTROLLER
+	;
+
+incrementar: ID ADD
+	| ID SUBSTRACT
+	;
+
+metodo:FUNCTION submetodo BREAKER
 	;
 
 submetodo: APPEND SUBFUNCTION OPENCONTROLLER ID CLOSECONTROLLER
@@ -57,7 +74,8 @@ asignacion: declaracion ASIGNATION NUMBER BREAKER {printf("La sentencia es valid
 	| ID ASIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
 	| ID ASIGNATION STRING BREAKER {printf("La sentencia es valida: asig= n\n") ; }
 	| ID ASIGNATION CHAR BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASIGNATION BOOLEAN BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASIGNATION FALSO BREAKER {printf("La sentencia es valida: asig= n\n") ; }
 	| ID ASIGNATION ID BREAKER {printf("La sentencia es valida: asig = id\n") ; }
 	;
 
@@ -72,21 +90,21 @@ declaracion: BYTE ID
 	;
 
 
-comparacion: IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
-	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}-else{}\n"); }
-	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if{}-else\n"); }
-	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if-else{}\n"); }
-	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE  CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if-else\n"); }
+comparacion: IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
+	| IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}-else{}\n"); }
+	| IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if{}-else\n"); }
+	| IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if-else{}\n"); }
+	| IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE  CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if-else\n"); }
 	;
 
-comparar: ID COMPARATOR ID 
+condicion: ID COMPARATOR ID 
 	| NUMBER COMPARATOR NUMBER 
  	| NUMBER COMPARATOR ID 
  	| NUMBER COMPARATOR FLOATNUMBER 
  	| FLOATNUMBER COMPARATOR NUMBER 
  	| FLOATNUMBER COMPARATOR FLOATNUMBER 
  	| FLOATNUMBER COMPARATOR ID 
-	| ID COMPARATOR	NUMBER 
+	| ID COMPARATOR	NUMBER {printf("La sentencia es valida: condicion: id - number\n");}
 	| ID COMPARATOR	FLOATNUMBER 
 	| ID submetodo
 	;
@@ -97,7 +115,7 @@ comparar: ID COMPARATOR ID
 /* Sección CODIGO USUARIO */
 FILE *yyin;
 int main(int argc, char **argv) {
-yyin = fopen(argv[1],"r");
+	yyin = fopen(argv[1],"r");
     yyparse();
     
     return 0;

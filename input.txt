@@ -15,5 +15,15 @@ clase Ejemplo1 {
 			a = 100;
 			a = 100;
 		}
+
+		para(entero contador = 5; contador > 0; contador--){
+			Salida.formato("Contador: %s", contador);
+		}
+
+		hacer{
+			Salida.formato("Contador: %s", contador);
+			contador++;
+		} mientras(contador > 0);
+
 	}
 }
