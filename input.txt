@@ -1,6 +1,8 @@
 clase Ejemplo1 {
 	InicioPrograma {
-		logico var = verdadero; 
+		entero var = 30; 
+		entero mayor = 15;
+		logico condicion = falso;
 		si ( var > 25.5) {
 			entero mayor = var;
 		}
@@ -11,10 +13,12 @@ clase Ejemplo1 {
 
 		si (texto.igual("texto 1")) { 
 			mayor = a;
+		} casoContrario si (texto.igual("texto 2")) {
+			mayor = a - 10;
+			condicion = falso;
 		} casoContrario {
-			a = 100;
-			a = 100;
-			a = 100;
+			var = a;
+			condicion = verdadero;
 		}
 
 		para(entero contador = 5; contador > 0; contador--){
