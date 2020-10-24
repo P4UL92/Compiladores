@@ -55,11 +55,11 @@ operacion: OPERATOR ID
 	;
 
 iterador: FOR iterador_header OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: para{}\n")}
-	| WHILE condicion OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: mientras{}\n")}
-	| DO OPENCLAUSE sentencias CLOSECLAUSE WHILE OPENCONTROLLER condicion CLOSECONTROLLER BREAKER {printf("La sentencia es valida: hacer - mientras{}\n")}
+	| WHILE condiciones OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: mientras{}\n")}
+	| DO OPENCLAUSE sentencias CLOSECLAUSE WHILE OPENCONTROLLER condiciones CLOSECONTROLLER BREAKER {printf("La sentencia es valida: hacer - mientras{}\n")}
 	;
 
-iterador_header: OPENCONTROLLER asignacion condicion BREAKER incrementar CLOSECONTROLLER
+iterador_header: OPENCONTROLLER asignacion condiciones BREAKER incrementar CLOSECONTROLLER
 	;
 
 incrementar: ID ADD
@@ -103,11 +103,15 @@ declaracion: BYTE ID
 	;
 
 
-comparacion: IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
-	| IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}-else{}\n"); }
-	| IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if{}-else\n"); }
-	| IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if-else{}\n"); }
-	| IF OPENCONTROLLER condicion CLOSECONTROLLER OPENCLAUSE  CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if-else\n"); }
+comparacion: IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
+	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}-else{}\n"); }
+	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if{}-else\n"); }
+	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if-else{}\n"); }
+	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE  CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if-else\n"); }
+	;
+
+condiciones: condiciones LINKER condicion
+	| condicion
 	;
 
 condicion: ID COMPARATOR ID 
