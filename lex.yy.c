@@ -867,7 +867,7 @@ YY_RULE_SETUP
 case 19:
 YY_RULE_SETUP
 #line 83 "lexer.l"
-{agregar_token(ASIGNATION, yytext); return ASIGNATION ;}
+{agregar_token(ASSIGNATION, yytext); return ASSIGNATION ;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP

@@ -37,7 +37,7 @@ APPEND				(\.)
 ADD				(\+\+)
 SUBSTRACT			(\-\-)
 COMPARATOR			((==)|(!=)|>|<|(>=)|(<=))
-ASIGNATION			(=)
+ASSIGNATION			(=)
 LINKER				(&|\||&&|\|\|)
 OPENCLAUSE			(\{)
 CLOSECLAUSE			(\})
@@ -80,7 +80,7 @@ NEXTLINE			(\n)
 {ADD}               	{agregar_token(ADD, yytext); return ADD; }
 {SUBSTRACT}         	{agregar_token(SUBSTRACT, yytext); return SUBSTRACT; }
 {COMPARATOR}        	{agregar_token(COMPARATOR, yytext); return COMPARATOR; }
-{ASIGNATION}        	{agregar_token(ASIGNATION, yytext); return ASIGNATION ;}
+{ASSIGNATION}        	{agregar_token(ASSIGNATION, yytext); return ASSIGNATION ;}
 {LINKER}            	{agregar_token(LINKER, yytext); return LINKER; }
 {OPENCLAUSE}		{agregar_token(OPENCLAUSE, yytext); return OPENCLAUSE; }
 {CLOSECLAUSE}		{agregar_token(CLOSECLAUSE, yytext); return CLOSECLAUSE; }

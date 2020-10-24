@@ -57,7 +57,7 @@
      ADD = 273,
      SUBSTRACT = 274,
      COMPARATOR = 275,
-     ASIGNATION = 276,
+     ASSIGNATION = 276,
      LINKER = 277,
      OPENCLAUSE = 278,
      CLOSECLAUSE = 279,

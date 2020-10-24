@@ -10,7 +10,7 @@ int yyerror(char *s);
 %}
 
 /* Sección REGLAS */
-%token PACKAGE CLASS FUNCTION SUBFUNCTION IF ELSE DO WHILE FOR VERDADERO FALSO BREAKER BINDER OPERATOR APPEND ADD SUBSTRACT COMPARATOR ASIGNATION LINKER OPENCLAUSE CLOSECLAUSE OPENCONTROLLER CLOSECONTROLLER STRING CHAR STARTER BYTE SHORT INT LONG FLOAT DOUBLE BOOLEAN CHARVAR STRINGVAR FLOATNUMBER NUMBER ID SPACE NEXTLINE
+%token PACKAGE CLASS FUNCTION SUBFUNCTION IF ELSE DO WHILE FOR VERDADERO FALSO BREAKER BINDER OPERATOR APPEND ADD SUBSTRACT COMPARATOR ASSIGNATION LINKER OPENCLAUSE CLOSECLAUSE OPENCONTROLLER CLOSECONTROLLER STRING CHAR STARTER BYTE SHORT INT LONG FLOAT DOUBLE BOOLEAN CHARVAR STRINGVAR FLOATNUMBER NUMBER ID SPACE NEXTLINE
 
 %%
 
@@ -39,6 +39,20 @@ sentencia: asignacion
 	| metodo
 	| iterador
 	| incrementar BREAKER
+	| operaciones BREAKER
+	| ID ASSIGNATION operaciones BREAKER
+	;
+
+operaciones: operaciones operacion
+	| operacion
+	;
+
+operacion: OPERATOR ID
+	| OPERATOR NUMBER
+	| OPERATOR FLOATNUMBER
+	| ID
+	| NUMBER
+	| FLOATNUMBER
 	;
 
 iterador: FOR iterador_header OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: para{}\n")}
@@ -62,21 +76,21 @@ submetodo: APPEND SUBFUNCTION OPENCONTROLLER ID CLOSECONTROLLER
 	| APPEND SUBFUNCTION OPENCONTROLLER STRING CLOSECONTROLLER
 	;
 
-asignacion: declaracion ASIGNATION NUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion float num\n");}
-	| declaracion ASIGNATION STRING BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASIGNATION CHAR BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASIGNATION FALSO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASIGNATION ID BREAKER {printf("La sentencia es valida: asignacion-declaracion var\n");}
+asignacion: declaracion ASSIGNATION NUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASSIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion float num\n");}
+	| declaracion ASSIGNATION STRING BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASSIGNATION CHAR BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASSIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASSIGNATION FALSO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
+	| declaracion ASSIGNATION ID BREAKER {printf("La sentencia es valida: asignacion-declaracion var\n");}
 	| declaracion BREAKER {printf("La sentencia es valida: dec\n") ; }
-	| ID ASIGNATION NUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASIGNATION STRING BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASIGNATION CHAR BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASIGNATION FALSO BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASIGNATION ID BREAKER {printf("La sentencia es valida: asig = id\n") ; }
+	| ID ASSIGNATION NUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASSIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASSIGNATION STRING BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASSIGNATION CHAR BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASSIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASSIGNATION FALSO BREAKER {printf("La sentencia es valida: asig= n\n") ; }
+	| ID ASSIGNATION ID BREAKER {printf("La sentencia es valida: asig = id\n") ; }
 	;
 
 declaracion: BYTE ID
