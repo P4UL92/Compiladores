@@ -1,13 +1,18 @@
-logico var = verdadero; 
+clase Ejemplo1 {
+	InicioPrograma {
+		logico var = verdadero; 
+		si ( var > 25.5) {
+			entero mayor = var;
+		}
 
-si ( var > 25.5) {
-	entero mayor = var;
-}
+		entero a = 1000;
 
-entero a = 1000;
-
-si (var < a) { 
-	mayor = a;
-} casoContrario {
-	a = 100;
+		si (var < a) { 
+			mayor = a;
+		} casoContrario {
+			a = 100;
+			a = 100;
+			a = 100;
+		}
+	}
 }

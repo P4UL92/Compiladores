@@ -14,12 +14,34 @@ int yyerror(char *s);
 
 %%
 
-sentencias: sentencia sentencias
-	| sentencia	
+programa: paquete clase
+	| clase
+	;
+
+paquete: PACKAGE ID APPEND ID APPEND ID BREAKER
+	;
+
+clase: CLASS ID OPENCLAUSE punto_entrada CLOSECLAUSE
+	;
+
+punto_entrada: STARTER OPENCLAUSE sentencias CLOSECLAUSE
+	;
+
+sentencias: sentencias sentencia
+	| sentencia
 	;
 
 sentencia: asignacion
 	| comparacion
+	| metodo
+	;
+
+metodo:FUNCTION APPEND submetodo BREAKER
+	;
+
+submetodo: APPEND SUBFUNCTION OPENCONTROLLER ID CLOSECONTROLLER
+	| APPEND SUBFUNCTION OPENCONTROLLER CLOSECONTROLLER
+	| APPEND SUBFUNCTION OPENCONTROLLER STRING BINDER ID CLOSECONTROLLER
 	;
 
 asignacion: declaracion ASIGNATION NUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
@@ -49,10 +71,10 @@ declaracion: BYTE ID
 	;
 
 
-comparacion: IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE asignacion CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
-
-	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE asignacion CLOSECLAUSE ELSE OPENCLAUSE asignacion CLOSECLAUSE {printf("La sentencia es valida: if{}-else{}\n"); }
-	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE asignacion CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if{}-else\n"); }
+comparacion: IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
+	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}-else{}\n"); }
+	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if{}-else\n"); }
+	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if-else{}\n"); }
 	| IF OPENCONTROLLER comparar CLOSECONTROLLER OPENCLAUSE  CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if-else\n"); }
 	;
 
@@ -65,6 +87,7 @@ comparar: ID COMPARATOR ID
  	| FLOATNUMBER COMPARATOR ID 
 	| ID COMPARATOR	NUMBER 
 	| ID COMPARATOR	FLOATNUMBER 
+	| ID submetodo
 	;
 
 
