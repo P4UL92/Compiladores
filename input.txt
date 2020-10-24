@@ -6,8 +6,9 @@ clase Ejemplo1 {
 		}
 
 		entero a = 1000;
+		cadena texto = "texto 1";
 
-		si (var < a) { 
+		si (texto.igual("texto 1")) { 
 			mayor = a;
 		} casoContrario {
 			a = 100;
