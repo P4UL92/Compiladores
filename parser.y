@@ -104,12 +104,22 @@ declaracion: BYTE ID
 	| STRINGVAR ID
 	;
 
+comparacion: si
+	| si caso_contrario
+	| si si_contrario
+	| si si_contrario caso_contrario
+	;
 
-comparacion: IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
-	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}-else{}\n"); }
-	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if{}-else\n"); }
-	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if-else{}\n"); }
-	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE  CLOSECLAUSE ELSE OPENCLAUSE CLOSECLAUSE {printf("La sentencia es valida: if-else\n"); }
+si: IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
+	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE{printf("La sentencia es valida: if{}-else{}\n"); }
+	;
+
+caso_contrario:ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
+	| ELSE OPENCLAUSE CLOSECLAUSE{printf("La sentencia es valida: if{}-else{}\n"); }
+	;
+
+si_contrario: si_contrario ELSE si
+	| ELSE si
 	;
 
 condiciones: condiciones LINKER condicion
