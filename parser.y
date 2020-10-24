@@ -44,15 +44,14 @@ sentencia: asignacion
 	;
 
 operaciones: operaciones operacion
-	| operacion
+	| ID
+	| NUMBER
+	| FLOATNUMBER
 	;
 
 operacion: OPERATOR ID
 	| OPERATOR NUMBER
 	| OPERATOR FLOATNUMBER
-	| ID
-	| NUMBER
-	| FLOATNUMBER
 	;
 
 iterador: FOR iterador_header OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: para{}\n")}
