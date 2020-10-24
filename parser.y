@@ -60,6 +60,8 @@ iterador: FOR iterador_header OPENCLAUSE sentencias CLOSECLAUSE {printf("La sent
 	;
 
 iterador_header: OPENCONTROLLER asignacion condiciones BREAKER incrementar CLOSECONTROLLER
+	| OPENCONTROLLER BREAKER condiciones BREAKER incrementar CLOSECONTROLLER
+	| OPENCONTROLLER BREAKER condiciones BREAKER CLOSECONTROLLER
 	;
 
 incrementar: ID ADD
