@@ -55,7 +55,7 @@ operacion: OPERATOR ID
 	;
 
 iterador: FOR iterador_header OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: para{}\n")}
-	| WHILE condiciones OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: mientras{}\n")}
+	| WHILE OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: mientras{}\n")}
 	| DO OPENCLAUSE sentencias CLOSECLAUSE WHILE OPENCONTROLLER condiciones CLOSECONTROLLER BREAKER {printf("La sentencia es valida: hacer - mientras{}\n")}
 	;
 
