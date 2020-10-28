@@ -146,6 +146,11 @@ comparacion: si
 	| si caso_contrario
 	| si si_contrario
 	| si si_contrario caso_contrario
+	/*Errores */
+	| ELSE OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("Error, una comparación debe empezar con 'si' \n");errores++;}
+	| ELSE OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE {printf("Error, una comparación debe empezar con 'si' \n");errores++;}
+	| si_contrario {printf("Error, una comparación debe empezar con 'si' \n");errores++;}
+	| caso_contrario {printf("Error, una comparación debe empezar con 'si' \n");errores++;}
 	;
 
 si: IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE
@@ -200,7 +205,8 @@ int main(int argc, char **argv) {
 }
 
 int yyerror(char *s) {
-    fprintf(stderr, "A.Sintactico: %s\n", s);
+    fprintf(stderr, "Error Sintactico\n", s);
+    errores++;
     return 0;
 }
 
