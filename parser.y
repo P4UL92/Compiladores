@@ -77,22 +77,18 @@ submetodo: APPEND SUBFUNCTION OPENCONTROLLER ID CLOSECONTROLLER
 	| APPEND SUBFUNCTION OPENCONTROLLER STRING CLOSECONTROLLER
 	;
 
-asignacion: declaracion ASSIGNATION NUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASSIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asignacion-declaracion float num\n");}
-	| declaracion ASSIGNATION STRING BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASSIGNATION CHAR BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASSIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASSIGNATION FALSO BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
-	| declaracion ASSIGNATION ID BREAKER {printf("La sentencia es valida: asignacion-declaracion var\n");}
+asignacion: declaracion ASSIGNATION tipo BREAKER {printf("La sentencia es valida: asignacion-declaracion num\n");}
 	| declaracion BREAKER {printf("La sentencia es valida: dec\n") ; }
-	| ID ASSIGNATION NUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASSIGNATION FLOATNUMBER BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASSIGNATION STRING BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASSIGNATION CHAR BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASSIGNATION VERDADERO BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASSIGNATION FALSO BREAKER {printf("La sentencia es valida: asig= n\n") ; }
-	| ID ASSIGNATION ID BREAKER {printf("La sentencia es valida: asig = id\n") ; }
+	| ID ASSIGNATION tipo BREAKER {printf("La sentencia es valida: asig= n\n") ; }
 	;
+
+tipo: NUMBER
+	| FLOATNUMBER
+	| STRING
+	| CHAR
+	| VERDADERO
+	| FALSO
+	| ID
 
 declaracion: BYTE ID
 	| INT ID
@@ -104,18 +100,18 @@ declaracion: BYTE ID
 	| STRINGVAR ID
 	;
 
-comparacion: si
-	| si caso_contrario
-	| si si_contrario
-	| si si_contrario caso_contrario
+comparacion: si {printf("La sentencia es valida: if\n"); }
+	| si caso_contrario {printf("La sentencia es valida: if-else\n"); }
+	| si si_contrario {printf("La sentencia es valida: if-else if\n"); }
+	| si si_contrario caso_contrario {printf("La sentencia es valida: if-(else if)-else\n"); }
 	;
 
-si: IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
-	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE{printf("La sentencia es valida: if{}-else{}\n"); }
+si: IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLAUSE
+	| IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE CLOSECLAUSE
 	;
 
-caso_contrario:ELSE OPENCLAUSE sentencias CLOSECLAUSE {printf("La sentencia es valida: if{}\n"); }
-	| ELSE OPENCLAUSE CLOSECLAUSE{printf("La sentencia es valida: if{}-else{}\n"); }
+caso_contrario:ELSE OPENCLAUSE sentencias CLOSECLAUSE
+	| ELSE OPENCLAUSE CLOSECLAUSE
 	;
 
 si_contrario: si_contrario ELSE si
