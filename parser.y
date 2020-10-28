@@ -8,7 +8,7 @@
 int errores = 0;
 int yylex();
 int yyerror(char *s);
-void VerifyErrors();
+void Errors(char* input);
 %}
 
 /* Sección REGLAS */
@@ -195,7 +195,7 @@ FILE *yyin;
 int main(int argc, char **argv) {
 	yyin = fopen(argv[1],"r");
     yyparse();
-    
+    Errors(argv[1]);
     return 0;
 }
 
@@ -204,10 +204,8 @@ int yyerror(char *s) {
     return 0;
 }
 
-void VerifyErrors(){
-    if(errores > 0){
-        ShowErrors();
-    } else {
+void Errors(char* input){
+    if(errores == 0){
         printf("======PROGRAMA VÁLIDO======\n");
         char run[100];
         strcpy(run, "flex traductor.l");
