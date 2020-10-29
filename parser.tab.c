@@ -1613,266 +1613,266 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 27 "parser.y"
-    {printf("Error, se espera ; al final de la linea\n");errores++;;}
+    {yyerror("Error, se espera ; al final de la linea\n");errores++;;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
 #line 28 "parser.y"
-    {printf("Error, se espera ; al final de la linea\n");errores++;;}
+    {yyerror("Error, se espera ; al final de la linea\n");errores++;;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
 #line 29 "parser.y"
-    {printf("Error, se espera ; al final de la linea\n");errores++;;}
+    {yyerror("Error, se espera ; al final de la linea\n");errores++;;}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
 #line 36 "parser.y"
-    {printf("Error, se espera cerradura de llaves }\n");errores++;;}
+    {yyerror("Error, se espera cerradura de llaves }\n");errores++;;}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
 #line 37 "parser.y"
-    {printf("Error, se espera cerradura de llaves }\n");errores++;;}
+    {yyerror("Error, se espera cerradura de llaves }\n");errores++;;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
 #line 42 "parser.y"
-    {printf("Error, se espera cerradura de llaves }\n");errores++;;}
+    {yyerror("Error, se espera cerradura de llaves }\n");errores++;;}
     break;
 
   case 25:
 
 /* Line 1455 of yacc.c  */
 #line 57 "parser.y"
-    {printf("Error, se espera ; al final de la linea\n");errores++;;}
+    {yyerror("Error, se espera ; al final de la linea\n");errores++;;}
     break;
 
   case 26:
 
 /* Line 1455 of yacc.c  */
 #line 58 "parser.y"
-    {printf("Error, se espera ; al final de la linea\n");errores++;;}
+    {yyerror("Error, se espera ; al final de la linea\n");errores++;;}
     break;
 
   case 27:
 
 /* Line 1455 of yacc.c  */
 #line 59 "parser.y"
-    {printf("Error, se espera ; al final de la linea\n");errores++;;}
+    {yyerror("Error, se espera ; al final de la linea\n");errores++;;}
     break;
 
   case 35:
 
 /* Line 1455 of yacc.c  */
 #line 72 "parser.y"
-    {printf("Error, se espera un operando \n");errores++;;}
+    {yyerror("Error, se espera un operando \n");errores++;;}
     break;
 
   case 39:
 
 /* Line 1455 of yacc.c  */
 #line 79 "parser.y"
-    {printf("La sentencia: hacer - mientras{} necesita cerradura ; \n");errores++;;}
+    {yyerror("La sentencia: hacer - mientras{} necesita cerradura ; \n");errores++;;}
     break;
 
   case 40:
 
 /* Line 1455 of yacc.c  */
 #line 81 "parser.y"
-    {printf("La sentencia: para{} se espera cierre de llaves } \n");errores++;;}
+    {yyerror("La sentencia: para{} se espera cierre de llaves } \n");errores++;;}
     break;
 
   case 41:
 
 /* Line 1455 of yacc.c  */
 #line 82 "parser.y"
-    {printf("La sentencia: mientras{} se espera cierre de llaves } \n");errores++;;}
+    {yyerror("La sentencia: mientras{} se espera cierre de llaves } \n");errores++;;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
 #line 84 "parser.y"
-    {printf("La sentencia hacer ? - mientras{} \n");errores++;;}
+    {yyerror("La sentencia hacer ? - mientras{} \n");errores++;;}
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
 #line 85 "parser.y"
-    {printf("La sentencia hacer - mientras{} ? \n");errores++;;}
+    {yyerror("La sentencia hacer - mientras{} ? \n");errores++;;}
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
 #line 87 "parser.y"
-    {printf("La sentencia hacer ? - mientras{} necesita cerradura ;\n");errores++;;}
+    {yyerror("La sentencia hacer ? - mientras{} necesita cerradura ;\n");errores++;;}
     break;
 
   case 45:
 
 /* Line 1455 of yacc.c  */
 #line 88 "parser.y"
-    {printf("La sentencia hacer - mientras{} ?  necesita cerradura ;\n");errores++;;}
+    {yyerror("La sentencia hacer - mientras{} ?  necesita cerradura ;\n");errores++;;}
     break;
 
   case 49:
 
 /* Line 1455 of yacc.c  */
 #line 95 "parser.y"
-    {printf("Error, se espera cerradura de ) \n");errores++;;}
+    {yyerror("Error, se espera cerradura de ) \n");errores++;;}
     break;
 
   case 50:
 
 /* Line 1455 of yacc.c  */
 #line 96 "parser.y"
-    {printf("Error, se espera cerradura de ) \n");errores++;;}
+    {yyerror("Error, se espera cerradura de ) \n");errores++;;}
     break;
 
   case 51:
 
 /* Line 1455 of yacc.c  */
 #line 97 "parser.y"
-    {printf("Error, se espera cerradura de ) \n");errores++;;}
+    {yyerror("Error, se espera cerradura de ) \n");errores++;;}
     break;
 
   case 59:
 
 /* Line 1455 of yacc.c  */
 #line 112 "parser.y"
-    {printf("Error, se espera cerradura de ) \n");errores++;;}
+    {yyerror("Error, se espera cerradura de ) \n");errores++;;}
     break;
 
   case 60:
 
 /* Line 1455 of yacc.c  */
 #line 113 "parser.y"
-    {printf("Error, se espera cerradura de ) \n");errores++;;}
+    {yyerror("Error, se espera cerradura de ) \n");errores++;;}
     break;
 
   case 61:
 
 /* Line 1455 of yacc.c  */
 #line 114 "parser.y"
-    {printf("Error, se espera cerradura de ) \n");errores++;;}
+    {yyerror("Error, se espera cerradura de ) \n");errores++;;}
     break;
 
   case 62:
 
 /* Line 1455 of yacc.c  */
 #line 115 "parser.y"
-    {printf("Error, se espera cerradura de ) \n");errores++;;}
+    {yyerror("Error, se espera cerradura de ) \n");errores++;;}
     break;
 
   case 66:
 
 /* Line 1455 of yacc.c  */
 #line 122 "parser.y"
-    {printf("Error, se espera ; al final de la linea\n");errores++;;}
+    {yyerror("Error, se espera ; al final de la linea\n");errores++;;}
     break;
 
   case 67:
 
 /* Line 1455 of yacc.c  */
 #line 123 "parser.y"
-    {printf("Error, se espera ; al final de la linea\n");errores++;;}
+    {yyerror("Error, se espera ; al final de la linea\n");errores++;;}
     break;
 
   case 68:
 
 /* Line 1455 of yacc.c  */
 #line 124 "parser.y"
-    {printf("La sentencia es valida: asig= n\n");errores++;;}
+    {yyerror("La sentencia es valida: asig= n\n");errores++;;}
     break;
 
   case 88:
 
 /* Line 1455 of yacc.c  */
 #line 150 "parser.y"
-    {printf("Error, una comparación debe empezar con 'si' \n");errores++;;}
+    {yyerror("Error, una comparación debe empezar con 'si' \n");errores++;;}
     break;
 
   case 89:
 
 /* Line 1455 of yacc.c  */
 #line 151 "parser.y"
-    {printf("Error, una comparación debe empezar con 'si' \n");errores++;;}
+    {yyerror("Error, una comparación debe empezar con 'si' \n");errores++;;}
     break;
 
   case 90:
 
 /* Line 1455 of yacc.c  */
 #line 152 "parser.y"
-    {printf("Error, una comparación debe empezar con 'si' \n");errores++;;}
+    {yyerror("Error, una comparación debe empezar con 'si' \n");errores++;;}
     break;
 
   case 91:
 
 /* Line 1455 of yacc.c  */
 #line 153 "parser.y"
-    {printf("Error, una comparación debe empezar con 'si' \n");errores++;;}
+    {yyerror("Error, una comparación debe empezar con 'si' \n");errores++;;}
     break;
 
   case 94:
 
 /* Line 1455 of yacc.c  */
 #line 159 "parser.y"
-    {printf("Error, faltan cerraduras de llaves \n");errores++;;}
+    {yyerror("Error, faltan cerraduras de llaves \n");errores++;;}
     break;
 
   case 95:
 
 /* Line 1455 of yacc.c  */
 #line 160 "parser.y"
-    {printf("Error, faltan cerraduras de llaves\n");errores++;;}
+    {yyerror("Error, faltan cerraduras de llaves\n");errores++;;}
     break;
 
   case 96:
 
 /* Line 1455 of yacc.c  */
 #line 162 "parser.y"
-    {printf("Error, faltan cerraduras de parentesis\n");errores++;;}
+    {yyerror("Error, faltan cerraduras de parentesis\n");errores++;;}
     break;
 
   case 97:
 
 /* Line 1455 of yacc.c  */
 #line 163 "parser.y"
-    {printf("Error, faltan cerraduras de parentesis\n");errores++;;}
+    {yyerror("Error, faltan cerraduras de parentesis\n");errores++;;}
     break;
 
   case 100:
 
 /* Line 1455 of yacc.c  */
 #line 169 "parser.y"
-    {printf("Error, faltan cerraduras de llaves\n");errores++;;}
+    {yyerror("Error, faltan cerraduras de llaves\n");errores++;;}
     break;
 
   case 101:
 
 /* Line 1455 of yacc.c  */
 #line 170 "parser.y"
-    {printf("Error, faltan cerraduras de llaves\n");errores++;;}
+    {yyerror("Error, faltan cerraduras de llaves\n");errores++;;}
     break;
 
   case 106:
 
 /* Line 1455 of yacc.c  */
 #line 180 "parser.y"
-    {printf("Error, no se encontro conector\n");errores++;;}
+    {yyerror("Error, no se encontro conector\n");errores++;;}
     break;
 
 
