@@ -61,7 +61,6 @@ NEXTLINE			(\n)
 /* Sección REGLAS */
 %%
 {PACKAGE}		{agregar_token(PACKAGE, yytext); return PACKAGE; }
-SI		{yyerror("Escribe el error aquí, nada más");}
 {CLASS} 	        {agregar_token(CLASS, yytext); return CLASS; }
 {FUNCTION}		{agregar_token(FUNCTION, yytext);  return FUNCTION; }	
 {SUBFUNCTION}		{agregar_token(SUBFUNCTION, yytext); return SUBFUNCTION; }
@@ -98,14 +97,53 @@ SI		{yyerror("Escribe el error aquí, nada más");}
 {CHARVAR}           	{agregar_token(CHARVAR, yytext); return CHARVAR; }
 {STRINGVAR}		{agregar_token(STRINGVAR, yytext); return STRINGVAR; }
 {FLOATNUMBER}		{agregar_token(FLOATNUMBER, yytext); return FLOATNUMBER; }
+
+	/* Errores de mayúsculas */
+PAQUETE			{yyerror("Quizo decir 'paquete'."); return PACKAGE;}
+CLASE			{yyerror("Quizo decir 'clase'."); return CLASS;}
+IMPRIMIR		{yyerror("Quizo decir 'imprimir'."); return SUBFUNCTION;}
+SI				{yyerror("Quizo decir 'si'."); return IF;}
+CASOCONTRARIO	{yyerror("Quizo decir 'casoContrario'."); return ELSE;}
+HACER			{yyerror("Quizo decir 'hacer'."); return DO;}
+MIENTRAS		{yyerror("Quizo decir 'mientras'."); return WHILE;}
+PARA 			{yyerror("Quizo decir 'para'."); return FOR;}
+VERDADERO		{yyerror("Quizo decir 'verdadero'."); return VERDADERO;}
+FALSO			{yyerror("Quizo decir 'falso'."); return FALSO;}
+INICIOPROGRAMA	{yyerror("Quizo decir 'InicioPrograma'."); return STARTER;}
+BYTE			{yyerror("Quizo decir 'byte'."); return BYTE;}
+ENTEROCORTO		{yyerror("Quizo decir 'enteroCorto'."); return SHORT;}
+ENTERO			{yyerror("Quizo decir 'entero'."); return INT;}
+ENTEROLARGO		{yyerror("Quizo decir 'enteroLargo'."); return LONG;}
+REAL			{yyerror("Quizo decir 'real'."); return FLOAT;}
+REALLARGO		{yyerror("Quizo decir 'realLargo'."); return DOUBLE;}
+
+
+	/* Errores de espacios */
+caso\ contrario		{yyerror("Quizo decir 'casoContrario'."); return ELSE; }
+caso\ Contrario		{yyerror("Quizo decir 'casoContrario'."); return ELSE; }
+Caso\ Contrario 	{yyerror("Quizo decir 'casoContrario'."); return ELSE; }
+inicio\ programa	{yyerror("Quizo decir 'InicioPrograma' "); return STARTER; }
+inicio\ Programa	{yyerror("Quizo decir 'InicioPrograma'"); return STARTER; }
+Inicio\ Programa	{yyerror("Quizo decir 'InicioPrograma'"); return STARTER; }
+entero\ Corto           {yyerror("Quizo decir 'enteroCorto'"); return SHORT; }
+entero\ Largo		{yyerror("Quizo decir 'enteroCorto'"); return DOUBLE; }
+
+
+	/* Errores de subguiones */
+caso\_contrario		{yyerror("Quizo decir 'casoContrario'."); return ELSE; }
+caso\_Contrario		{yyerror("Quizo decir 'casoContrario'."); return ELSE; }
+Caso\_Contrario 	{yyerror("Quizo decir 'casoContrario'."); return ELSE; }
+inicio\_programa	{yyerror("Quizo decir 'InicioPrograma' "); return STARTER; }
+inicio\_Programa	{yyerror("Quizo decir 'InicioPrograma'"); return STARTER; }
+Inicio\_Programa	{yyerror("Quizo decir 'InicioPrograma'"); return STARTER; }
+entero\_Corto           {yyerror("Quizo decir 'enteroCorto'"); return SHORT; }
+entero\_Largo		{yyerror("Quizo decir 'enteroCorto'"); return DOUBLE; }
+
+
 {NUMBER}		{agregar_token(NUMBER, yytext); return NUMBER; }
 {ID}			{agregar_token(ID, yytext); return ID; }
 {SPACE}			{ }
 {NEXTLINE} 		{ nextline();}
-
-
-
-
 
 %%
 
