@@ -11,7 +11,6 @@
 
 int agregar_token(int tipo, char *palabra);
 int buscar_token(char *palabra, int tipo);
-char* SaveError(char* message);
 
 int estado = 0;
 int linea = 1;
@@ -63,7 +62,7 @@ NEXTLINE			(\n)
 /* Sección REGLAS */
 %%
 {PACKAGE}		{agregar_token(PACKAGE, yytext); return PACKAGE; }
-SI		{yyerror(SaveError("Escribe el error aqúí y le agregas el siguiente texto: , linea %d "));}
+SI		{yyerror("Escribe el error aquí, nada más");}
 {CLASS} 	        {agregar_token(CLASS, yytext); return CLASS; }
 {FUNCTION}		{agregar_token(FUNCTION, yytext);  return FUNCTION; }	
 {SUBFUNCTION}		{agregar_token(SUBFUNCTION, yytext); return SUBFUNCTION; }
@@ -103,7 +102,7 @@ SI		{yyerror(SaveError("Escribe el error aqúí y le agregas el siguiente texto:
 {NUMBER}		{agregar_token(NUMBER, yytext); return NUMBER; }
 {ID}			{agregar_token(ID, yytext); return ID; }
 {SPACE}			{ }
-{NEXTLINE} 		{ linea++;}
+{NEXTLINE} 		{ linea++;nextline();}
 
 
 
@@ -154,16 +153,6 @@ int buscar_token(char *token, int tipo) {
 	}
 	return 0;
 }
-
-char* SaveError(char* message){
-    char messageError[100];
-    sprintf(messageError,message,linea);
-    char* finalMessage = (char*)calloc(1, strlen(messageError) + 1);
-    strcpy(finalMessage,messageError);
-    return finalMessage;
-}
-
-
 
 
 

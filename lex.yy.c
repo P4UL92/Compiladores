@@ -531,14 +531,13 @@ char *yytext;
 
 int agregar_token(int tipo, char *palabra);
 int buscar_token(char *palabra, int tipo);
-char* SaveError(char* message);
 
 int estado = 0;
 int linea = 1;
 
 
 /* Sección REGLAS */
-#line 542 "lex.yy.c"
+#line 541 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -689,9 +688,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 64 "lexer.l"
+#line 63 "lexer.l"
 
-#line 695 "lex.yy.c"
+#line 694 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -776,220 +775,220 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 65 "lexer.l"
+#line 64 "lexer.l"
 {agregar_token(PACKAGE, yytext); return PACKAGE; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 66 "lexer.l"
-{yyerror(SaveError("Escribe el error aqúí y le agregas el siguiente texto: , linea %d "));}
+#line 65 "lexer.l"
+{yyerror("Escribe el error aquí, nada más");}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 67 "lexer.l"
+#line 66 "lexer.l"
 {agregar_token(CLASS, yytext); return CLASS; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 68 "lexer.l"
+#line 67 "lexer.l"
 {agregar_token(FUNCTION, yytext);  return FUNCTION; }	
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 69 "lexer.l"
+#line 68 "lexer.l"
 {agregar_token(SUBFUNCTION, yytext); return SUBFUNCTION; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 70 "lexer.l"
+#line 69 "lexer.l"
 {agregar_token(IF, yytext);  return IF; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 71 "lexer.l"
+#line 70 "lexer.l"
 {agregar_token(ELSE, yytext); return ELSE;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 72 "lexer.l"
+#line 71 "lexer.l"
 {agregar_token(DO, yytext); return DO;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 73 "lexer.l"
+#line 72 "lexer.l"
 {agregar_token(WHILE, yytext); return WHILE; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 74 "lexer.l"
+#line 73 "lexer.l"
 {agregar_token(FOR, yytext); return FOR; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 75 "lexer.l"
+#line 74 "lexer.l"
 {agregar_token(VERDADERO, yytext); return VERDADERO; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 76 "lexer.l"
+#line 75 "lexer.l"
 {agregar_token(FALSO, yytext); return FALSO; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 77 "lexer.l"
+#line 76 "lexer.l"
 {agregar_token(BREAKER, yytext); return BREAKER; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 78 "lexer.l"
+#line 77 "lexer.l"
 {agregar_token(BINDER, yytext); return BINDER; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 79 "lexer.l"
+#line 78 "lexer.l"
 {agregar_token(OPERATOR, yytext); return OPERATOR; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 80 "lexer.l"
+#line 79 "lexer.l"
 {agregar_token(APPEND, yytext); return APPEND; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 81 "lexer.l"
+#line 80 "lexer.l"
 {agregar_token(ADD, yytext); return ADD; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 82 "lexer.l"
+#line 81 "lexer.l"
 {agregar_token(SUBSTRACT, yytext); return SUBSTRACT; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 83 "lexer.l"
+#line 82 "lexer.l"
 {agregar_token(COMPARATOR, yytext); return COMPARATOR; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 84 "lexer.l"
+#line 83 "lexer.l"
 {agregar_token(ASSIGNATION, yytext); return ASSIGNATION ;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 85 "lexer.l"
+#line 84 "lexer.l"
 {agregar_token(LINKER, yytext); return LINKER; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 86 "lexer.l"
+#line 85 "lexer.l"
 {agregar_token(OPENCLAUSE, yytext); return OPENCLAUSE; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 87 "lexer.l"
+#line 86 "lexer.l"
 {agregar_token(CLOSECLAUSE, yytext); return CLOSECLAUSE; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 88 "lexer.l"
+#line 87 "lexer.l"
 {agregar_token(OPENCONTROLLER, yytext); return OPENCONTROLLER; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 89 "lexer.l"
+#line 88 "lexer.l"
 {agregar_token(CLOSECONTROLLER, yytext); return CLOSECONTROLLER; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 90 "lexer.l"
+#line 89 "lexer.l"
 {agregar_token(STRING, yytext); return STRING;}	
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 91 "lexer.l"
+#line 90 "lexer.l"
 {agregar_token(CHAR, yytext); return CHAR; }    
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 92 "lexer.l"
+#line 91 "lexer.l"
 {agregar_token(STARTER, yytext); return STARTER; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 93 "lexer.l"
+#line 92 "lexer.l"
 {agregar_token(BYTE, yytext); return BYTE; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 94 "lexer.l"
+#line 93 "lexer.l"
 {agregar_token(SHORT, yytext); return SHORT; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 95 "lexer.l"
+#line 94 "lexer.l"
 {agregar_token(INT, yytext); return INT; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 96 "lexer.l"
+#line 95 "lexer.l"
 {agregar_token(LONG, yytext); return LONG;  }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 97 "lexer.l"
+#line 96 "lexer.l"
 {agregar_token(FLOAT, yytext); return FLOAT; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 98 "lexer.l"
+#line 97 "lexer.l"
 {agregar_token(DOUBLE, yytext); return DOUBLE; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 99 "lexer.l"
+#line 98 "lexer.l"
 {agregar_token(BOOLEAN, yytext); return BOOLEAN; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 100 "lexer.l"
+#line 99 "lexer.l"
 {agregar_token(CHARVAR, yytext); return CHARVAR; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 101 "lexer.l"
+#line 100 "lexer.l"
 {agregar_token(STRINGVAR, yytext); return STRINGVAR; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 102 "lexer.l"
+#line 101 "lexer.l"
 {agregar_token(FLOATNUMBER, yytext); return FLOATNUMBER; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 103 "lexer.l"
+#line 102 "lexer.l"
 {agregar_token(NUMBER, yytext); return NUMBER; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 104 "lexer.l"
+#line 103 "lexer.l"
 {agregar_token(ID, yytext); return ID; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 105 "lexer.l"
+#line 104 "lexer.l"
 { }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 106 "lexer.l"
-{ linea++;}
+#line 105 "lexer.l"
+{ linea++;nextline();}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 112 "lexer.l"
+#line 111 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 993 "lex.yy.c"
+#line 992 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1875,7 +1874,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 112 "lexer.l"
+#line 111 "lexer.l"
 
 
 /* Sección CODIGO USUARIO */
@@ -1921,16 +1920,6 @@ int buscar_token(char *token, int tipo) {
 	}
 	return 0;
 }
-
-char* SaveError(char* message){
-    char messageError[100];
-    sprintf(messageError,message,linea);
-    char* finalMessage = (char*)calloc(1, strlen(messageError) + 1);
-    strcpy(finalMessage,messageError);
-    return finalMessage;
-}
-
-
 
 
 

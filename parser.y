@@ -6,9 +6,11 @@
 /*#define YYERROR_VERBOSE*/
 
 int errores = 0;
+int line = 1;
 int yylex();
 int yyerror(char *s);
 void Errors(char* input);
+void nextline();
 %}
 
 /* Sección REGLAS */
@@ -166,8 +168,8 @@ si: IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLA
 caso_contrario:ELSE OPENCLAUSE sentencias CLOSECLAUSE
 	| ELSE OPENCLAUSE CLOSECLAUSE
 	/*errores*/
-	| ELSE OPENCLAUSE sentencias {yyerror("Error, faltan cerraduras de llaves\n");errores++;}
-	| ELSE OPENCLAUSE {yyerror("Error, faltan cerraduras de llaves\n");errores++;}
+	| ELSE OPENCLAUSE sentencias {yyerror("Error, faltan cerraduras de llaves");errores++;}
+	| ELSE OPENCLAUSE {yyerror("Error, faltan cerraduras de llaves");errores++;}
 	;
 
 si_contrario: si_contrario ELSE si
@@ -205,7 +207,7 @@ int main(int argc, char **argv) {
 }
 
 int yyerror(char *s) {
-    fprintf(stderr, "Error: %s\n", s);
+    fprintf(stderr, "Error linea %d: %s\n", line, s);
     errores++;
     return 0;
 }
@@ -228,4 +230,8 @@ void Errors(char* input){
             }
         }
     }
+}
+
+void nextline() {
+	line++;
 }
