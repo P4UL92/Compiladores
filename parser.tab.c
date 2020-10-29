@@ -2103,7 +2103,7 @@ int main(int argc, char **argv) {
 }
 
 int yyerror(char *s) {
-    fprintf(stderr, "Error Sintactico\n", s);
+    fprintf(stderr, "Error: %s\n", s);
     errores++;
     return 0;
 }

@@ -11,7 +11,7 @@ clase Ejemplo1 {
 		cadena texto = "texto 1";
 		a = a + 10;
 
-		si (texto.igual("texto 1")) { 
+		SI (texto.igual("texto 1")) { 
 			mayor = a;
 		} casoContrario si (texto.igual("texto 2")) {
 			mayor = a - 10;
