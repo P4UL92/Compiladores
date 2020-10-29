@@ -1860,7 +1860,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 171 "parser.y"
-    {yyerror("Error, faltan cerraduras de llaves");errores++;;}
+    {yyerror("Error, faltan cerraduras de llaves\n");errores++;;}
     break;
 
   case 101:

@@ -168,7 +168,7 @@ si: IF OPENCONTROLLER condiciones CLOSECONTROLLER OPENCLAUSE sentencias CLOSECLA
 caso_contrario:ELSE OPENCLAUSE sentencias CLOSECLAUSE
 	| ELSE OPENCLAUSE CLOSECLAUSE
 	/*errores*/
-	| ELSE OPENCLAUSE sentencias {yyerror("Error, faltan cerraduras de llaves");errores++;}
+	| ELSE OPENCLAUSE sentencias {yyerror("Error, faltan cerraduras de llaves\n");errores++;}
 	| ELSE OPENCLAUSE {yyerror("Error, faltan cerraduras de llaves");errores++;}
 	;
 

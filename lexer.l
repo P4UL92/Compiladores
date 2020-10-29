@@ -13,7 +13,6 @@ int agregar_token(int tipo, char *palabra);
 int buscar_token(char *palabra, int tipo);
 
 int estado = 0;
-int linea = 1;
 
 
 %}
@@ -102,7 +101,7 @@ SI		{yyerror("Escribe el error aquí, nada más");}
 {NUMBER}		{agregar_token(NUMBER, yytext); return NUMBER; }
 {ID}			{agregar_token(ID, yytext); return ID; }
 {SPACE}			{ }
-{NEXTLINE} 		{ linea++;nextline();}
+{NEXTLINE} 		{ nextline();}
 
 
 
